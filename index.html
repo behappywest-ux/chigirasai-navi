@@ -1,492 +1,332 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-  <title>千輝祭2026 CAMPUS NAVIGATION</title>
-
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-
-    body {
-      margin: 0;
-      font-family:
-        "Yu Gothic",
-        "Hiragino Kaku Gothic ProN",
-        sans-serif;
-      background: #fffaf4;
-      color: #333;
-    }
-
-
-    /* ヘッダー */
-    header {
-      background: #ffffff;
-      text-align: center;
-      padding: 45px 20px 35px;
-      border-bottom: 1px solid #eee;
-    }
-
-
-    .festival-name {
-      font-size: 38px;
-      font-weight: 900;
-      letter-spacing: 8px;
-      margin: 0;
-    }
-
-
-    .year {
-      font-size: 20px;
-      letter-spacing: 5px;
-      margin-top: 8px;
-    }
-
-
-    .subtitle {
-      font-size: 13px;
-      letter-spacing: 3px;
-      margin-top: 12px;
-      color: #777;
-    }
-
-
-    /* メイン */
-    main {
-      max-width: 700px;
-      margin: auto;
-      padding: 35px 20px 60px;
-    }
-
-
-    .today {
-      text-align: center;
-      font-size: 13px;
-      letter-spacing: 3px;
-      font-weight: bold;
-      margin-bottom: 12px;
-    }
-
-
-    .catchcopy {
-      text-align: center;
-      font-size: 28px;
-      font-weight: bold;
-      line-height: 1.6;
-      margin-bottom: 35px;
-    }
-
-
-    /* 検索 */
-    .search-button {
-      display: block;
-      width: 100%;
-      padding: 18px 20px;
-      background: #ffffff;
-      border: 2px solid #333;
-      border-radius: 14px;
-      font-size: 16px;
-      text-align: left;
-      text-decoration: none;
-      color: #333;
-      box-shadow: 4px 4px 0 #333;
-      transition: 0.2s;
-    }
-
-
-    .search-button:hover {
-      transform: translate(2px, 2px);
-      box-shadow: 2px 2px 0 #333;
-    }
-
-
-    .search-icon {
-      font-size: 20px;
-      margin-right: 8px;
-    }
-
-
-    /* MAP・EVENT */
-    .menu-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-      margin-top: 25px;
-    }
-
-
-    .menu-card {
-      background: #ffffff;
-      border-radius: 18px;
-      padding: 28px 15px;
-      text-align: center;
-      text-decoration: none;
-      color: #333;
-      border: 1px solid #eee;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.06);
-      transition: 0.2s;
-    }
-
-
-    .menu-card:hover {
-      transform: translateY(-3px);
-    }
-
-
-    .menu-icon {
-      font-size: 38px;
-      display: block;
-      margin-bottom: 10px;
-    }
-
-
-    .menu-title {
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-
-    .menu-text {
-      font-size: 12px;
-      color: #777;
-      margin-top: 5px;
-    }
-
-
-    /* BUILDING */
-    .section-title {
-      text-align: center;
-      margin: 45px 0 18px;
-      font-size: 13px;
-      letter-spacing: 4px;
-      color: #777;
-    }
-
-
-    .building-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-    }
-
-
-    .building {
-      padding: 25px 15px;
-      background: #333;
-      color: white;
-      border-radius: 16px;
-      text-align: center;
-      text-decoration: none;
-      transition: 0.2s;
-    }
-
-
-    .building:hover {
-      opacity: 0.85;
-      transform: translateY(-2px);
-    }
-
-
-    .building-icon {
-      font-size: 30px;
-    }
-
-
-    .building-name {
-      font-size: 21px;
-      font-weight: bold;
-      margin-top: 8px;
-    }
-
-
-    .building-text {
-      font-size: 11px;
-      margin-top: 5px;
-      opacity: 0.8;
-    }
-
-
-    /* お知らせ */
-    .notice {
-      margin-top: 40px;
-      background: #fff;
-      border-radius: 16px;
-      padding: 20px;
-      border: 1px solid #eee;
-    }
-
-
-    .notice-title {
-      font-weight: bold;
-      margin-bottom: 12px;
-    }
-
-
-    .notice p {
-      font-size: 13px;
-      line-height: 1.8;
-      margin: 5px 0;
-    }
-
-
-    /* フッター */
-    footer {
-      text-align: center;
-      padding: 30px 10px;
-      background: #333;
-      color: white;
-      font-size: 11px;
-      letter-spacing: 1px;
-    }
-
-
-    /* スマホ */
-    @media (max-width: 500px) {
-
-
-      .festival-name {
-        font-size: 30px;
-        letter-spacing: 5px;
-      }
-
-
-      .catchcopy {
-        font-size: 23px;
-      }
-
-
-      main {
-        padding: 25px 15px 50px;
-      }
-
-
-      .menu-grid,
-      .building-grid {
-        gap: 10px;
-      }
-
-
-    }
-
-
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>千輝祭2026 CAMPUS NAVIGATION</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        "Noto Sans JP",
+        "Yu Gothic",
+        sans-serif;
+      background: #f7f8fc;
+      color: #333;
+    }
+
+    /* ヘッダー */
+    header {
+      background: linear-gradient(135deg, #ff7b8a, #ffb36b);
+      color: white;
+      padding: 35px 20px 30px;
+      border-radius: 0 0 30px 30px;
+    }
+
+    .festival {
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 38px;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      margin-top: 8px;
+      font-size: 15px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    /* 今日の案内 */
+    .today {
+      margin: 20px;
+      padding: 20px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+    }
+
+    .today-title {
+      font-size: 13px;
+      font-weight: bold;
+      color: #ff7180;
+      margin-bottom: 8px;
+    }
+
+    .today h2 {
+      margin: 0 0 5px;
+      font-size: 21px;
+    }
+
+    .today p {
+      margin: 0;
+      color: #666;
+      font-size: 14px;
+    }
+
+    /* メイン */
+    main {
+      padding: 0 20px 40px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      margin: 28px 0 15px;
+    }
+
+    /* 検索 */
+    .search-box {
+      background: white;
+      padding: 15px;
+      border-radius: 18px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 14px;
+      border: 2px solid #eee;
+      border-radius: 12px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .search-box input:focus {
+      border-color: #ff8b96;
+    }
+
+    /* MAP・EVENT */
+    .menu {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .menu-card {
+      padding: 22px 15px;
+      border-radius: 20px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+
+    .map {
+      background: #6fc6a8;
+    }
+
+    .event {
+      background: #6fa8dc;
+    }
+
+    .menu-icon {
+      display: block;
+      font-size: 30px;
+      margin-bottom: 7px;
+    }
+
+    /* 建物 */
+    .building {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .building-card {
+      background: white;
+      padding: 20px;
+      border-radius: 20px;
+      text-decoration: none;
+      color: #333;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+      transition: 0.2s;
+    }
+
+    .building-card:active {
+      transform: scale(0.97);
+    }
+
+    .building-number {
+      font-size: 14px;
+      color: #ff7180;
+      font-weight: bold;
+    }
+
+    .building-name {
+      font-size: 22px;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
+    .building-text {
+      font-size: 13px;
+      color: #777;
+      margin-top: 5px;
+    }
+
+    /* フッター */
+    footer {
+      text-align: center;
+      padding: 25px 15px;
+      color: #999;
+      font-size: 12px;
+    }
+
+    /* PCでも見やすく */
+    @media (min-width: 700px) {
+      body {
+        max-width: 700px;
+        margin: auto;
+        background: #eef0f6;
+      }
+
+      header {
+        border-radius: 0 0 35px 35px;
+      }
+    }
+  </style>
 </head>
-
-
-
 
 <body>
 
+  <header>
+    <div class="festival">東京福祉大学　学祭</div>
+    <h1>千輝祭 2026</h1>
+    <div class="subtitle">CAMPUS NAVIGATION</div>
+  </header>
+
+  <section class="today">
+    <div class="today-title">TODAY</div>
+    <h2>千輝祭を楽しもう！</h2>
+    <p>行きたい企画や場所を見つけよう。</p>
+  </section>
+
+  <main>
+
+    <h2 class="section-title">「行きたい！」を見つけよう</h2>
+
+    <div class="search-box">
+      <input
+        type="text"
+        id="search"
+        placeholder="🔍 企画名・場所を検索"
+        onkeyup="searchPlan()"
+      >
+    </div>
+
+    <h2 class="section-title">MENU</h2>
+
+    <div class="menu">
+      <a href="#building" class="menu-card map">
+        <span class="menu-icon">🗺️</span>
+        MAP
+        <br>
+        <small>構内を見る</small>
+      </a>
+
+      <a href="#event" class="menu-card event">
+        <span class="menu-icon">🎪</span>
+        EVENT
+        <br>
+        <small>企画を見る</small>
+      </a>
+    </div>
+
+    <h2 class="section-title" id="event">EVENT</h2>
+
+    <div id="plans">
+
+      <div class="building-card plan">
+        <div class="building-number">EVENT 01</div>
+        <div class="building-name">サークル企画</div>
+        <div class="building-text">
+          千輝祭で行われるサークルの企画です。
+        </div>
+      </div>
+
+      <div class="building-card plan">
+        <div class="building-number">EVENT 02</div>
+        <div class="building-name">ステージ企画</div>
+        <div class="building-text">
+          学祭を盛り上げるステージイベント！
+        </div>
+      </div>
+
+      <div class="building-card plan">
+        <div class="building-number">EVENT 03</div>
+        <div class="building-name">その他の企画</div>
+        <div class="building-text">
+          さまざまな企画をチェックしよう。
+        </div>
+      </div>
+
+    </div>
+
+    <h2 class="section-title" id="building">BUILDING</h2>
+
+    <div class="building">
+
+      <a href="#" class="building-card">
+        <div class="building-number">BUILDING 08</div>
+        <div class="building-name">8号館</div>
+        <div class="building-text">
+          8号館の企画・場所を確認する
+        </div>
+      </a>
+
+      <a href="#" class="building-card">
+        <div class="building-number">BUILDING 09</div>
+        <div class="building-name">9号館</div>
+        <div class="building-text">
+          9号館の企画・場所を確認する
+        </div>
+      </a>
+
+    </div>
+
+  </main>
+
+  <footer>
+    東京福祉大学 千輝祭2026<br>
+    CAMPUS NAVIGATION
+  </footer>
 
-  <!-- ヘッダー -->
-  <header>
+  <script>
+    function searchPlan() {
 
+      const keyword =
+        document.getElementById("search").value.toLowerCase();
 
-    <h1 class="festival-name">
-      千輝祭
-    </h1>
+      const plans =
+        document.querySelectorAll(".plan");
 
+      plans.forEach(function(plan) {
 
-    <div class="year">
-      2026
-    </div>
+        const text =
+          plan.textContent.toLowerCase();
 
+        if (text.includes(keyword)) {
+          plan.style.display = "block";
+        } else {
+          plan.style.display = "none";
+        }
 
-    <div class="subtitle">
-      CAMPUS NAVIGATION
-    </div>
-
-
-  </header>
-
-
-
-
-  <!-- メイン -->
-  <main>
-
-
-    <div class="today">
-      ✦ TODAY ✦
-    </div>
-
-
-    <div class="catchcopy">
-      「行きたい！」を<br>
-      見つけよう。
-    </div>
-
-
-
-
-    <!-- 企画検索 -->
-    <a href="#" class="search-button">
-      <span class="search-icon">🔎</span>
-      企画を探す
-    </a>
-
-
-
-
-    <!-- MAP / EVENT -->
-    <div class="menu-grid">
-
-
-      <a href="#" class="menu-card">
-
-
-        <span class="menu-icon">
-          🗺️
-        </span>
-
-
-        <div class="menu-title">
-          MAP
-        </div>
-
-
-        <div class="menu-text">
-          構内図を見る
-        </div>
-
-
-      </a>
-
-
-
-
-      <a href="#" class="menu-card">
-
-
-        <span class="menu-icon">
-          🎪
-        </span>
-
-
-        <div class="menu-title">
-          EVENT
-        </div>
-
-
-        <div class="menu-text">
-          企画を見る
-        </div>
-
-
-      </a>
-
-
-    </div>
-
-
-
-
-    <!-- BUILDING -->
-    <div class="section-title">
-      BUILDING
-    </div>
-
-
-
-
-    <div class="building-grid">
-
-
-      <a href="#" class="building">
-
-
-        <div class="building-icon">
-          🏫
-        </div>
-
-
-        <div class="building-name">
-          8号館
-        </div>
-
-
-        <div class="building-text">
-          8号館の企画を見る
-        </div>
-
-
-      </a>
-
-
-
-
-      <a href="#" class="building">
-
-
-        <div class="building-icon">
-          🏫
-        </div>
-
-
-        <div class="building-name">
-          9号館
-        </div>
-
-
-        <div class="building-text">
-          9号館の企画を見る
-        </div>
-
-
-      </a>
-
-
-    </div>
-
-
-
-
-    <!-- お知らせ -->
-    <div class="notice">
-
-
-      <div class="notice-title">
-        📢 INFORMATION
-      </div>
-
-
-      <p>
-        千輝祭の企画を検索して、
-        行きたい場所を見つけよう！
-      </p>
-
-
-      <p>
-        8号館・9号館の企画情報を掲載予定です。
-      </p>
-
-
-    </div>
-
-
-  </main>
-
-
-
-
-  <!-- フッター -->
-  <footer>
-
-
-    千輝祭2026 CAMPUS NAVIGATION
-
-
-  </footer>
-
+      });
+    }
+  </script>
 
 </body>
 </html>
-
-
-Outlook for iOS を入手
