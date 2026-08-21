@@ -1,1 +1,180 @@
+/* =========================
+   千輝祭ナビ - レイアウト②
+   ========================= */
 
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family:
+    "Noto Sans JP",
+    "Yu Gothic",
+    "Meiryo",
+    sans-serif;
+  background: #f7f8fa;
+  color: #333;
+}
+
+/* ヘッダー */
+header {
+  background: #ffffff;
+  padding: 18px 24px;
+  border-bottom: 1px solid #e5e5e5;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+header p {
+  margin: 5px 0 0;
+  color: #777;
+  font-size: 13px;
+}
+
+/* メイン */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 18px 50px;
+}
+
+/* 見出し */
+h2 {
+  margin: 10px 0 18px;
+  font-size: 22px;
+}
+
+/* カードを並べる */
+.container,
+.cards,
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+/* カード */
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 20px;
+  border: 1px solid #e6e6e6;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.card p {
+  margin: 0;
+  line-height: 1.7;
+  color: #666;
+}
+
+/* ボタン */
+button,
+.btn,
+a.button {
+  display: inline-block;
+  border: none;
+  border-radius: 10px;
+  padding: 11px 18px;
+  margin-top: 10px;
+  background: #333;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover,
+.btn:hover,
+a.button:hover {
+  opacity: 0.8;
+}
+
+/* 検索欄 */
+input,
+select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: white;
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #999;
+}
+
+/* マップ */
+.map,
+.map-container {
+  background: white;
+  border-radius: 14px;
+  padding: 16px;
+  margin-top: 20px;
+  border: 1px solid #e5e5e5;
+  overflow: hidden;
+}
+
+.map img,
+.map-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* フッター */
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #888;
+  font-size: 13px;
+}
+
+/* スマホ対応 */
+@media (max-width: 700px) {
+  header {
+    padding: 15px;
+  }
+
+  header h1 {
+    font-size: 20px;
+  }
+
+  main {
+    padding: 18px 12px 40px;
+  }
+
+  .container,
+  .cards,
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 16px;
+  }
+}
