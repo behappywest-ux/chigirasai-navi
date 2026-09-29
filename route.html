@@ -1,1 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>千輝祭｜行き方検索</title>
 
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #f7f8f6;
+      color: #333;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 30px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .box {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    select {
+      width: 100%;
+      padding: 14px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background: white;
+    }
+
+    button {
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 12px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      background: #333;
+      color: white;
+    }
+
+    #result {
+      display: none;
+      margin-top: 25px;
+    }
+
+    .route-step {
+      background: white;
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 15px;
+    }
+
+    .route-step h3 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>🗺️ 千輝祭 ナビ</h1>
+
+    <div class="box">
+      <label for="current">📍 現在地</label>
+
+      <select id="current">
+        <option value="">現在地を選んでください</option>
+
+        <option>9号館入口</option>
+        <option>出張千輝祭ラジオ</option>
+        <option>千輝祭ミュージックフェス</option>
+        <option>学部対抗クイズ</option>
+        <option>世代を超えろ！イントロドン</option>
+        <option>ビンゴ大会</option>
+　      <option>休憩コーナー</option>
+　      <option>保育児童学部の魅力を留学生が描いてみた</option>
+　      <option>出張！心理学入門</option>
+　      <option>入学相談</option>
+　      <option>つくってあそぼ♪クレーンゲーム</option>
+　     <option></option>
+        <option>好事研究サークル</option>
+　     <option></option>
+        <option>ゲートキーパー養成サークル</option>
+      <option></option>
+        <option>公開講座</option>
+       <option></option>
+     
+　     <option>8号館入口</option>
+　    <option></option>
+ 　    <option>スポーツ交流サークル</option>
+ 　    <option>事件ファイル001隠された宝</option>
+        <option>ボランティアサークル</option>
+　      <option>めざせハットトリック！？ダーツ体験会！</option>
+        <option>あの頃のお使い</option>
+  　    <option>リアル人生ゲーム～今日だけ人生やり直せます。～</option>
+        <option>レクリエーションサークル</option>
+        <option>RAINBOW</option>
+　      <option>タイムカプセル・メモリアル企画/千輝祭ヒストリー</option>
+        <option>映画サークル</option>
+       <option></option>
+       
+      </select>
+    </div>
+
+    <div class="box">
+      <label for="destination">🎪 行きたい企画</label>
+
+      <select id="destination">
+        <option value="">企画を選んでください</option>
+
+        <option>企画①</option>
+        <option>企画②</option>
+        <option>企画③</option>
+        <option>企画④</option>
+      </select>
+    </div>
+
+    <button onclick="showRoute()">
+      🚶 ここまでの行き方を見る
+    </button>
+
+    <div id="result">
+
+      <div class="box">
+        <strong>現在地：</strong>
+        <span id="currentText"></span>
+        <br><br>
+        <strong>目的地：</strong>
+        <span id="destinationText"></span>
+      </div>
+
+      <div class="route-step">
+        <h3>📸 STEP 1</h3>
+        <p>ここに最初の写真と説明を入れます。</p>
+      </div>
+
+      <div class="route-step">
+        <h3>📸 STEP 2</h3>
+        <p>ここに次の写真と説明を入れます。</p>
+      </div>
+
+      <div class="route-step">
+        <h3>📸 STEP 3</h3>
+        <p>ここに到着までの写真と説明を入れます。</p>
+      </div>
+
+      <div class="box">
+        🎉 目的地に到着！
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    function showRoute() {
+
+      const current = document.getElementById("current").value;
+      const destination = document.getElementById("destination").value;
+
+      if (!current || !destination) {
+        alert("現在地と行きたい企画を選んでください！");
+        return;
+      }
+
+      document.getElementById("currentText").textContent = current;
+      document.getElementById("destinationText").textContent = destination;
+
+      document.getElementById("result").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
