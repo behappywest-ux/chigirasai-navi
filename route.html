@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>千輝祭｜行き方検索</title>
+  <title>行き方を探す</title>
 
   <style>
     body {
-      margin: 0;
       font-family: sans-serif;
-      background: #f7f8f6;
+      margin: 0;
+      padding: 30px 20px;
+      background: #f7f7f7;
       color: #333;
     }
 
     .container {
       max-width: 600px;
-      margin: 0 auto;
-      padding: 30px 20px;
+      margin: auto;
     }
 
     h1 {
@@ -24,214 +24,157 @@
       margin-bottom: 35px;
     }
 
-    .box {
+    .step {
       background: white;
-      border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+      padding: 25px;
+      margin-bottom: 25px;
+      border-radius: 15px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
     }
 
-    label {
-      display: block;
+    .step-number {
+      font-size: 14px;
       font-weight: bold;
-      margin-bottom: 10px;
+      color: #777;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      margin-top: 0;
     }
 
     select {
       width: 100%;
-      padding: 14px;
+      padding: 15px;
       font-size: 16px;
       border: 1px solid #ccc;
       border-radius: 10px;
       background: white;
     }
 
-    button {
+    .route-button {
       width: 100%;
-      padding: 16px;
+      padding: 17px;
       border: none;
       border-radius: 12px;
+      background: #333;
+      color: white;
       font-size: 17px;
       font-weight: bold;
       cursor: pointer;
-      background: #333;
-      color: white;
     }
 
-    #result {
-      display: none;
-      margin-top: 25px;
-    }
-
-    .route-step {
-      background: white;
-      border-radius: 14px;
-      padding: 18px;
-      margin-bottom: 15px;
-    }
-
-    .route-step h3 {
-      margin-top: 0;
+    .route-button:hover {
+      opacity: 0.8;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <h1>🗺️ 千輝祭 ナビ</h1>
+  <h1>📍 行き方を探す</h1>
 
-    <div class="box">
-      <label for="current">📍 現在地</label>
+  <!-- ① 現在位置 -->
+  <div class="step">
 
-      <select id="current">
-        <option value="">現在地を選んでください</option>
+    <div class="step-number">STEP 1</div>
 
-        <option>9号館入口</option>
-        <option>出張千輝祭ラジオ</option>
-        <option>千輝祭ミュージックフェス</option>
-        <option>学部対抗クイズ</option>
-        <option>世代を超えろ！イントロドン</option>
-        <option>ビンゴ大会</option>
-        <option>男女トイレ</option>
-        <option>障害者施設製品販売～僕らが描いたもの～</option>
-        <option>男女トイレ</option>
-        <option>多目的トイレ</option>
-　      <option>休憩コーナー</option>
-　      <option>保育児童学部の魅力を留学生が描いてみた</option>
-        <option>男女トイレ</option>
-　      <option>出張！心理学入門</option>
-　      <option>入学相談</option>
-　      <option>つくってあそぼ♪クレーンゲーム</option>
-　      <option>手作り遊び広場</option>
-        <option>出張！王子キャンパス好事研究サークル</option>
-        <option>男性トイレ</option>
-        <option>女性トイレ</option>
-　      <option>着物生地を再利用した、作品の展示</option>
-        <option>ココロ・クエスト～命の木を育てよう～</option>
-        <option>男性トイレ</option>
-        <option>手縫いでチャレンジ！簡単お手玉講座</option>
-        <option>わらべうた遊び講座</option>
-        <option>ことばでつながる！世界のことばチャレンジラリー</option>
-        <option>フォトスポット・巨大ロゴモニュメント（雨天時）</option>
-        <option>女性トイレ</option>
-     
-　     <option>8号館入口</option>
-       <option>フォトスポット・巨大ロゴモニュメント</option>
-       <option>出張こみCafe ~羊毛フェルトマスコットとお菓子の販売～</option>
-　     <option>nico letterコーヒーと豆販売</option>
- 　    <option>秋祭り</option>
- 　    <option>事件ファイル001隠された宝</option>
-　 　  <option>ありがとうを届ける、ほっとメッセージ企画</option>
-　     <option>めざせハットトリック！？ダーツ体験会！</option>
-       <option>あの頃のお使い</option>
-  　   <option>リアル人生ゲーム～今日だけ人生やり直せます。～</option>
-       <option>ボドゲとレクで遊ぼう</option>
-       <option>リトルハーモニー演奏会</option>
-　     <option>タイムカプセル・メモリアル企画/千輝祭ヒストリー</option>
-       <option>映画好き必見！？映画で交流しよう</option>
-       
-      </select>
-    </div>
+    <h2>現在位置</h2>
 
-    <div class="box">
-      <label for="destination">🎪 行きたい企画</label>
+    <select id="start">
+      <option value="">現在位置を選択してください</option>
 
-      <select id="destination">
-        <option value="">企画を選んでください</option>
+      <option value="entrance">9号館入口</option>
 
-        <option>9号館入口</option>
-        <option>出張千輝祭ラジオ</option>
-        <option>千輝祭ミュージックフェス</option>
-        <option>学部対抗クイズ</option>
-        <option>世代を超えろ！イントロドン</option>
-        <option>ビンゴ大会</option>
-        <option>コミットプレイス</option>
-　      <option>休憩コーナー</option>
-　      <option>保育児童学部の魅力を留学生が描いてみた</option>
-　      <option>出張！心理学入門</option>
-　      <option>入学相談</option>
-　      <option>つくってあそぼ♪クレーンゲーム</option>
-　     <option>手作り遊びb広場</option>
-        <option>出張！王子キャンパス好事研究サークル</option>
-　     <option>麦の家～僕らが描いたもの～</option>
-        <option>ココロ・クエスト～命の木を育てよう～</option>
-      <option></option>
-        <option>手縫いでチャレンジ！簡単お手玉講座</option>
-       <option>わらべうた遊び講座</option>
-     
-　     <option>8号館入口</option>
-　    <option>nico letterコーヒーと豆販売</option>
- 　    <option>秋祭り</option>
- 　    <option>事件ファイル001隠された宝</option>
-　 　  <option>ボランティアサークル</option>
-　     <option>めざせハットトリック！？ダーツ体験会！</option>
-       <option>あの頃のお使い</option>
-  　   <option>リアル人生ゲーム～今日だけ人生やり直せます。～</option>
-       <option>ボドゲとレクで遊ぼう</option>
-       <option>リトルハーモニー演奏会</option>
-　     <option>タイムカプセル・メモリアル企画/千輝祭ヒストリー</option>
-       <option>映画好き必見！？映画で交流しよう</option>
-      <option></option>
-      </select>
-    </div>
+      <option value="9-b1">出張千輝祭ラジオ</option>
+      <option value="9-b1">千輝祭ミュージックフェス</option>
+      <option value="9-b1">学部対抗クイズ</option>
+      <option value="9-b1">世代を超える！イントロドン</option>
+      <option value="9-b1">ビンゴ大会</option>
+      <option value="9-b1">男女トイレ</option>
+      <option value="9-1">コミットプレイス</option>
+      <option value="9-2">休憩コーナー</option>
+      <option value="9-2">保育児童学部の魅力を留学生が描いてみた</option>
+      <option value="9-3">出張！心理学入門</option>
+      <option value="9-3">入学相談</option>
+       <option value="9-3">つくってあそぼ♪クレーンゲーム</option>
+       <option value="9-3">手作り遊び広場</option>
+       <option value="9-3">出張！王子キャンパス好事研究サークル</option>
+       <option value="9-4">麦の家〜僕らか描いたもの〜</option>
+      <option value="9-4">ココロ･クエスト〜命の木を育てよう〜</option>
+      <option value="9-5">手縫いでチャレンジ！簡単お手玉講座</option>
+      <option value="9-5">わらべうた遊び講座</option>
 
-    <button onclick="showRoute()">
-      🚶 ここまでの行き方を見る
-    </button>
+      <option value="8-1">8号館入口</option>
+      <option value="8-1">nico letterコーヒーと豆販売</option>
+      <option value="">9号館 2階</option>
+      <option value="9-3">9号館 3階</option>
+      <option value="9-4">9号館 4階</option>
+      <option value="9-5">9号館 5階</option>
+    </select>
 
-    <div id="result">
+  </div>
 
-      <div class="box">
-        <strong>現在地：</strong>
-        <span id="currentText"></span>
-        <br><br>
-        <strong>目的地：</strong>
-        <span id="destinationText"></span>
-      </div>
 
-      <div class="route-step">
-        <h3>📸 STEP 1</h3>
-        <p>ここに最初の写真と説明を入れます。</p>
-      </div>
+  <!-- ② 行きたい企画 -->
+  <div class="step">
 
-      <div class="route-step">
-        <h3>📸 STEP 2</h3>
-        <p>ここに次の写真と説明を入れます。</p>
-      </div>
+    <div class="step-number">STEP 2</div>
 
-      <div class="route-step">
-        <h3>📸 STEP 3</h3>
-        <p>ここに到着までの写真と説明を入れます。</p>
-      </div>
+    <h2>行きたい企画</h2>
 
-      <div class="box">
-        🎉 目的地に到着！
-      </div>
+    <select id="destination">
 
-    </div>
+      <option value="">企画を選択してください</option>
 
-  </div>
+      <option value="901">901教室</option>
+      <option value="902">902教室</option>
+      <option value="903">903教室</option>
 
-  <script>
-    function showRoute() {
+      <option value="931">931教室</option>
+      <option value="932">932教室</option>
+      <option value="933">933教室</option>
+      <option value="934">934教室</option>
 
-      const current = document.getElementById("current").value;
-      const destination = document.getElementById("destination").value;
+      <option value="941">941教室</option>
+      <option value="942">942教室</option>
 
-      if (!current || !destination) {
-        alert("現在地と行きたい企画を選んでください！");
-        return;
-      }
+      <option value="951">951教室</option>
+      <option value="952">952教室</option>
+      <option value="953">953教室</option>
+      <option value="954">954教室</option>
 
-      document.getElementById("currentText").textContent = current;
-      document.getElementById("destinationText").textContent = destination;
+    </select>
 
-      document.getElementById("result").style.display = "block";
-    }
-  </script>
+  </div>
+
+
+  <!-- ③ -->
+  <button class="route-button" onclick="showRoute()">
+    ここまでの行き方を見る
+  </button>
+
+</div>
+
+
+<script>
+
+function showRoute() {
+
+  const start = document.getElementById("start").value;
+  const destination = document.getElementById("destination").value;
+
+  if (start === "" || destination === "") {
+    alert("現在位置と行きたい企画を選択してください！");
+    return;
+  }
+
+  alert("ルートを表示する準備中です！");
+}
+
+</script>
 
 </body>
 </html>
