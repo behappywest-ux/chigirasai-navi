@@ -232,6 +232,15 @@
     </select>
   </div>
 
+ <div class="step-box">
+  <div class="step-title">STEP 3　ルートタイプ</div>
+
+  <select id="routeMode">
+    <option value="normal">通常ルート</option>
+    <option value="barrierfree">♿ バリアフリールート</option>
+  </select>
+</div>
+
 
   <!-- ルート表示ボタン -->
   <button onclick="showRoute()">
@@ -259,6 +268,7 @@ function showRoute() {
  const start = document.getElementById("start").value;
   const destination = document.getElementById("destination").value;
   const result = document.getElementById("routeResult");
+  const routeMode = document.getElementById("routeMode").value;
 
   if (!start || !destination) {
     alert("現在地と行きたい企画を選んでください！");
@@ -266,6 +276,7 @@ function showRoute() {
   }
 
   let route = [];
+  let isBarrierFree = routeMode === "barrierfree";
 
   // ルート
   if (start === "9-3" && destination === "931") {
@@ -296,25 +307,55 @@ function showRoute() {
   }
 
   else if (start.startsWith("8-") && destination.startsWith("9")) {
+
+  if (isBarrierFree) {
+    route = [
+      "現在地の階からエレベーターへ向かいます",
+      "エレベーターで8号館の入口階へ移動します",
+      "8号館の入口から出ます",
+      "段差の少ないルートで9号館へ移動します",
+      "9号館の入口から入ります",
+      "エレベーターで目的の階へ移動します",
+      "目的地に到着です！"
+    ];
+  } else {
     route = [
       "現在地の階から8号館の入口へ向かいます",
-      "8号館を出て9号館へ移動します",
-      "9号館に入ります",
+      "8号館の入口から出ます",
+      "9号館へ移動します",
+      "9号館の入口から入ります",
       "目的の階へ移動します",
       "目的地に到着です！"
     ];
   }
 
-  else if (start.startsWith("9-") && destination.startsWith("8")) {
+}
+
+
+else if (start.startsWith("9-") && destination.startsWith("8")) {
+
+  if (isBarrierFree) {
+    route = [
+      "現在地の階からエレベーターへ向かいます",
+      "エレベーターで9号館の入口階へ移動します",
+      "9号館の入口から出ます",
+      "段差の少ないルートで8号館へ移動します",
+      "8号館の入口から入ります",
+      "エレベーターで目的の階へ移動します",
+      "目的地に到着です！"
+    ];
+  } else {
     route = [
       "現在地の階から9号館の入口へ向かいます",
-      "9号館を出て8号館へ移動します",
-      "8号館に入ります",
+      "9号館の入口から出ます",
+      "8号館へ移動します",
+      "8号館の入口から入ります",
       "目的の階へ移動します",
       "目的地に到着です！"
     ];
   }
 
+}
   else {
     route = [
       "現在地から目的地へ向かいます",
