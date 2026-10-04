@@ -95,6 +95,25 @@
       border-radius: 15px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
+
+   .route-photo {
+  width: 100%;
+  border-radius: 12px;
+  margin: 10px 0 15px;
+  display: block;
+}
+
+.photo-placeholder {
+  width: 100%;
+  height: 180px;
+  background: #eeeeee;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #777;
+  margin: 10px 0 15px;
+}
   </style>
 </head>
 
@@ -423,11 +442,18 @@ else if (start.startsWith("9-") && destination.startsWith("8")) {
       <h2>🗺️ 写真付きルート</h2>
 
       ${route.map((step, index) => `
-        <div class="route-step">
-          <strong>STEP ${index + 1}</strong>
-          <p>${step}</p>
-        </div>
-      `).join("")}
+  <div class="route-step">
+
+    <strong>STEP ${index + 1}</strong>
+
+    <div class="photo-placeholder">
+      📷 写真を入れる場所
+    </div>
+
+    <p>${step}</p>
+
+  </div>
+`).join("")}
 
       ${toiletHTML}
 
