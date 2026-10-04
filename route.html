@@ -209,22 +209,22 @@
       <option value="8-1">スペシャルティコーヒーの提供と豆販売</option>
       <option value="8-1">多目的お手洗い</option>
       <option value="8-1">出張こみCafe ～羊毛フェルトマスコットとお菓子の販売～</option>
-      <option value="8-2">秋祭り</option>
+      <option value="821">秋祭り</option>
       <option value="8-2">男女お手洗い</option>
-      <option value="8-3">事件ファイル001隠された宝</option>
-      <option value="8-3">ありがとうを届ける、ほっとメッセージ</option>
+      <option value="831">事件ファイル001隠された宝</option>
+      <option value="832">ありがとうを届ける、ほっとメッセージ</option>
       <option value="8-3">男女お手洗い</option>
-      <option value="8-4">めざせハットトリック！？ダーツ体験！</option>
-      <option value="8-4">あの頃のお使い</option>
-      <option value="8-4">リアル人生ゲーム～今日だけ人生やり直せます。～</option>
+      <option value="841">めざせハットトリック！？ダーツ体験！</option>
+      <option value="841">あの頃のお使い</option>
+      <option value="841">リアル人生ゲーム～今日だけ人生やり直せます。～</option>
       <option value="8-4">男女お手洗い</option>
-      <option value="8-5">ボドゲとレクで遊ぼう！</option>
+      <option value="851">ボドゲとレクで遊ぼう！</option>
       <option value="8-5">男女お手洗い</option>
-      <option value="8-6">演奏会</option>
+      <option value="861">演奏会</option>
       <option value="8-6">男女お手洗い</option>
-      <option value="8-7">タイムカプセル・メモリアル企画</option>
-      <option value="8-7">千輝祭ヒストリー</option>
-      <option value="8-7">映画で人々と交流</option>
+      <option value="871">タイムカプセル・メモリアル企画</option>
+      <option value="871">千輝祭ヒストリー</option>
+      <option value="872">映画で人々と交流</option>
       <option value="8-7">男女お手洗い</option>
 
       </optgroup>
@@ -256,7 +256,7 @@
 
 function showRoute() {
 
-  const start = document.getElementById("start").value;
+ const start = document.getElementById("start").value;
   const destination = document.getElementById("destination").value;
   const result = document.getElementById("routeResult");
 
@@ -267,53 +267,35 @@ function showRoute() {
 
   let route = [];
 
-  /*
-    同じ階の場合
-  */
+  // ルート
   if (start === "9-3" && destination === "931") {
-
     route = [
       "9号館3階の現在地から出発します",
       "廊下を進みます",
       "931教室へ向かいます",
       "931教室に到着です！"
     ];
-
   }
 
-  /*
-    9号館3階 → 9号館B1階
-  */
   else if (start === "9-3" && destination === "901") {
-
     route = [
       "9号館3階から出発します",
-      "階段またはエレベーターで下の階へ移動します",
+      "階段またはエレベーターでB1階へ移動します",
       "9号館B1階へ向かいます",
       "901教室に到着です！"
     ];
-
   }
 
-  /*
-    9号館5階 → 9号館3階
-  */
   else if (start === "9-5" && destination === "931") {
-
     route = [
       "9号館5階から出発します",
       "階段またはエレベーターで3階へ移動します",
       "3階の廊下を進みます",
       "931教室に到着です！"
     ];
-
   }
 
-  /*
-    8号館 → 9号館
-  */
   else if (start.startsWith("8-") && destination.startsWith("9")) {
-
     route = [
       "現在地の階から8号館の入口へ向かいます",
       "8号館を出て9号館へ移動します",
@@ -321,14 +303,9 @@ function showRoute() {
       "目的の階へ移動します",
       "目的地に到着です！"
     ];
-
   }
 
-  /*
-    9号館 → 8号館
-  */
   else if (start.startsWith("9-") && destination.startsWith("8")) {
-
     route = [
       "現在地の階から9号館の入口へ向かいます",
       "9号館を出て8号館へ移動します",
@@ -336,26 +313,72 @@ function showRoute() {
       "目的の階へ移動します",
       "目的地に到着です！"
     ];
-
   }
 
-  /*
-    その他
-  */
   else {
-
     route = [
       "現在地から目的地へ向かいます",
       "目的の階へ移動します",
       "目的地の教室を目指します",
       "到着です！"
     ];
+  }
+
+
+  // トイレ情報
+  const toilet = toilets[start];
+
+  let toiletHTML = "";
+
+  if (toilet) {
+
+    toiletHTML = `
+      <div class="toilet-box">
+        <h2>🚻 お手洗い</h2>
+
+        ${
+          toilet.location
+          ? `<p>📍 ${toilet.location}</p>`
+          : ""
+        }
+
+        ${
+          toilet.male
+          ? `<p>🚹 男子トイレ${toilet.maleLocation ? "：" + toilet.maleLocation : ""}</p>`
+          : ""
+        }
+
+        ${
+          toilet.female
+          ? `<p>🚺 女子トイレ${toilet.femaleLocation ? "：" + toilet.femaleLocation : ""}</p>`
+          : ""
+        }
+
+        ${
+          toilet.multipurpose
+          ? `<p>♿ 多目的トイレ${toilet.multipurposeLocation ? "：" + toilet.multipurposeLocation : ""}</p>`
+          : ""
+        }
+
+      </div>
+    `;
+
+  } else {
+
+    toiletHTML = `
+      <div class="toilet-box">
+        <h2>🚻 お手洗い</h2>
+        <p>この場所のお手洗い情報はありません。</p>
+      </div>
+    `;
 
   }
 
 
+  // 画面に表示
   result.innerHTML = `
     <div class="route-box">
+
       <h2>🗺️ 写真付きルート</h2>
 
       ${route.map((step, index) => `
@@ -365,14 +388,12 @@ function showRoute() {
         </div>
       `).join("")}
 
-      <div class="toilet-box">
-        🚻 <strong>最寄りのお手洗い</strong>
-        <p>トイレの場所を登録すると、ここに表示できます。</p>
-      </div>
+      ${toiletHTML}
 
     </div>
   `;
 
+  result.style.display = "block";
 }
 
 </script>
