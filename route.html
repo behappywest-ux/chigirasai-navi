@@ -282,14 +282,9 @@
 
 <script>
 
-   const toilets = {
-
-  // ====================
-  // 9号館
-  // ====================
-
+const toilets = {
   "9-b1": {
-    location: "9号館B1階 ○○付近",
+    location: "9号館B1階 エレベーター出て左側",
     male: true,
     female: true,
     multipurpose: false
@@ -310,14 +305,12 @@
   },
 
   "9-3": {
-  male: true,
-  maleLocation: "9号館3階 エレベーター出て左側",
-
-  female: true,
-  femaleLocation: "9号館3階 エレベーター出て右側",
-
-  multipurpose: false
-},
+    male: true,
+    maleLocation: "9号館3階 エレベーター出て左側",
+    female: true,
+    femaleLocation: "9号館3階 エレベーター出て右側",
+    multipurpose: false
+  },
 
   "9-4": {
     location: "9号館4階 エレベーター出て左側",
@@ -332,11 +325,6 @@
     female: true,
     multipurpose: false
   },
-
-
-  // ====================
-  // 8号館
-  // ====================
 
   "8-1": {
     location: "8号館1階 自販機前",
@@ -386,188 +374,208 @@
     female: true,
     multipurpose: false
   }
-
 };
+
 
 function showRoute() {
 
- const start = document.getElementById("start").value;
-  const destination = document.getElementById("destination").value;
-  const result = document.getElementById("routeResult");
+  const start = document.getElementById("start").value;
+  const destination = document.getElementById("destination").value;
   const routeMode = document.getElementById("routeMode").value;
+  const result = document.getElementById("routeResult");
 
-  if (!start || !destination) {
-    alert("現在地と行きたい企画を選んでください！");
-    return;
-  }
+  if (!start || !destination) {
+    alert("現在地と行きたい企画を選んでください！");
+    return;
+  }
 
-  let route = [];
-  let isBarrierFree = routeMode === "barrierfree";
+  let route = [];
 
-  // ルート
-  if (start === "9-3" && destination === "931") {
-    route = [
-      "9号館3階の現在地から出発します",
-      "廊下を進みます",
-      "931教室へ向かいます",
-      "931教室に到着です！"
-    ];
-  }
-
-  else if (start === "9-3" && destination === "901") {
-    route = [
-      "9号館3階から出発します",
-      "階段またはエレベーターでB1階へ移動します",
-      "9号館B1階へ向かいます",
-      "901教室に到着です！"
-    ];
-  }
-
-  else if (start === "9-5" && destination === "931") {
-    route = [
-      "9号館5階から出発します",
-      "階段またはエレベーターで3階へ移動します",
-      "3階の廊下を進みます",
-      "931教室に到着です！"
-    ];
-  }
-
-  else if (start.startsWith("8-") && destination.startsWith("9")) {
-
-  if (isBarrierFree) {
-    route = [
-      "現在地の階からエレベーターへ向かいます",
-      "エレベーターで8号館の入口階へ移動します",
-      "8号館の入口から出ます",
-      "段差の少ないルートで9号館へ移動します",
-      "9号館の入口から入ります",
-      "エレベーターで目的の階へ移動します",
-      "目的地に到着です！"
-    ];
-  } else {
-    route = [
-      "現在地の階から8号館の入口へ向かいます",
-      "8号館の入口から出ます",
-      "9号館へ移動します",
-      "9号館の入口から入ります",
-      "目的の階へ移動します",
-      "目的地に到着です！"
-    ];
-  }
-
-}
+  const isBarrierFree = routeMode === "barrierfree";
 
 
-else if (start.startsWith("9-") && destination.startsWith("8")) {
+  // 9号館3階 → 931
+  if (start === "9-3" && destination === "931") {
 
-  if (isBarrierFree) {
-    route = [
-      "現在地の階からエレベーターへ向かいます",
-      "エレベーターで9号館の入口階へ移動します",
-      "9号館の入口から出ます",
-      "段差の少ないルートで8号館へ移動します",
-      "8号館の入口から入ります",
-      "エレベーターで目的の階へ移動します",
-      "目的地に到着です！"
-    ];
-  } else {
-    route = [
-      "現在地の階から9号館の入口へ向かいます",
-      "9号館の入口から出ます",
-      "8号館へ移動します",
-      "8号館の入口から入ります",
-      "目的の階へ移動します",
-      "目的地に到着です！"
-    ];
-  }
+    route = [
+      "9号館3階の現在地から出発します",
+      "廊下を進みます",
+      "931教室へ向かいます",
+      "931教室に到着です！"
+    ];
 
-}
-  else {
-    route = [
-      "現在地から目的地へ向かいます",
-      "目的の階へ移動します",
-      "目的地の教室を目指します",
-      "到着です！"
-    ];
-  }
+  }
+
+  // 9号館3階 → 901
+  else if (start === "9-3" && destination === "901") {
+
+    route = [
+      "9号館3階から出発します",
+      "階段またはエレベーターでB1階へ移動します",
+      "9号館B1階へ向かいます",
+      "901教室に到着です！"
+    ];
+
+  }
+
+  // 9号館5階 → 931
+  else if (start === "9-5" && destination === "931") {
+
+    route = [
+      "9号館5階から出発します",
+      "階段またはエレベーターで3階へ移動します",
+      "3階の廊下を進みます",
+      "931教室に到着です！"
+    ];
+
+  }
+
+  // 8号館 → 9号館
+  else if (start.startsWith("8-") && destination.startsWith("9")) {
+
+    if (isBarrierFree) {
+
+      route = [
+        "現在地の階からエレベーターへ向かいます",
+        "エレベーターで8号館の入口階へ移動します",
+        "8号館の入口から出ます",
+        "段差の少ないルートで9号館へ移動します",
+        "9号館の入口から入ります",
+        "エレベーターで目的の階へ移動します",
+        "目的地に到着です！"
+      ];
+
+    } else {
+
+      route = [
+        "現在地の階から8号館の入口へ向かいます",
+        "8号館の入口から出ます",
+        "9号館へ移動します",
+        "9号館の入口から入ります",
+        "目的の階へ移動します",
+        "目的地に到着です！"
+      ];
+
+    }
+
+  }
+
+  // 9号館 → 8号館
+  else if (start.startsWith("9-") && destination.startsWith("8")) {
+
+    if (isBarrierFree) {
+
+      route = [
+        "現在地の階からエレベーターへ向かいます",
+        "エレベーターで9号館の入口階へ移動します",
+        "9号館の入口から出ます",
+        "段差の少ないルートで8号館へ移動します",
+        "8号館の入口から入ります",
+        "エレベーターで目的の階へ移動します",
+        "目的地に到着です！"
+      ];
+
+    } else {
+
+      route = [
+        "現在地の階から9号館の入口へ向かいます",
+        "9号館の入口から出ます",
+        "8号館へ移動します",
+        "8号館の入口から入ります",
+        "目的の階へ移動します",
+        "目的地に到着です！"
+      ];
+
+    }
+
+  }
+
+  // その他
+  else {
+
+    route = [
+      "現在地から目的地へ向かいます",
+      "目的の階へ移動します",
+      "目的地の教室を目指します",
+      "到着です！"
+    ];
+
+  }
 
 
-  // トイレ情報
-  const toilet = toilets[start];
+  // トイレ情報
+  const toilet = toilets[start];
 
-  let toiletHTML = "";
+  let toiletHTML = "";
 
-  if (toilet) {
+  if (toilet) {
 
-    toiletHTML = `
-      <div class="toilet-box">
-        <h2>🚻 お手洗い</h2>
+    toiletHTML = `
+      <div class="toilet-box">
+        <h2>🚻 お手洗い</h2>
 
-        ${
-          toilet.location
-          ? `<p>📍 ${toilet.location}</p>`
-          : ""
-        }
+        ${toilet.location
+          ? `<p>📍 ${toilet.location}</p>`
+          : ""
+        }
 
-        ${
-          toilet.male
-          ? `<p>🚹 男子トイレ${toilet.maleLocation ? "：" + toilet.maleLocation : ""}</p>`
-          : ""
-        }
+        ${toilet.male
+          ? `<p>🚹 男子トイレ${toilet.maleLocation ? "：" + toilet.maleLocation : ""}</p>`
+          : ""
+        }
 
-        ${
-          toilet.female
-          ? `<p>🚺 女子トイレ${toilet.femaleLocation ? "：" + toilet.femaleLocation : ""}</p>`
-          : ""
-        }
+        ${toilet.female
+          ? `<p>🚺 女子トイレ${toilet.femaleLocation ? "：" + toilet.femaleLocation : ""}</p>`
+          : ""
+        }
 
-        ${
-          toilet.multipurpose
-          ? `<p>♿ 多目的トイレ${toilet.multipurposeLocation ? "：" + toilet.multipurposeLocation : ""}</p>`
-          : ""
-        }
+        ${toilet.multipurpose
+          ? `<p>♿ 多目的トイレ${toilet.multipurposeLocation ? "：" + toilet.multipurposeLocation : ""}</p>`
+          : ""
+        }
 
-      </div>
-    `;
+      </div>
+    `;
 
-  } else {
+  } else {
 
-    toiletHTML = `
-      <div class="toilet-box">
-        <h2>🚻 お手洗い</h2>
-        <p>この場所のお手洗い情報はありません。</p>
-      </div>
-    `;
+    toiletHTML = `
+      <div class="toilet-box">
+        <h2>🚻 お手洗い</h2>
+        <p>この場所のお手洗い情報はありません。</p>
+      </div>
+    `;
 
-  }
+  }
 
 
-  // 画面に表示
-  result.innerHTML = `
-    <div class="route-box">
+  // ルート表示
+  result.innerHTML = `
+    <div class="route-box">
 
-      <h2>🗺️ 写真付きルート</h2>
+      <h2>🗺️ 写真付きルート</h2>
 
-      ${route.map((step, index) => `
-  <div class="route-step">
+      ${route.map((step, index) => `
+        <div class="route-step">
 
-    <strong>STEP ${index + 1}</strong>
+          <strong>STEP ${index + 1}</strong>
 
-    <div class="photo-placeholder">
-      📷 写真を入れる場所
-    </div>
+          <div class="photo-placeholder">
+            📷 写真を入れる場所
+          </div>
 
-    <p>${step}</p>
+          <p>${step}</p>
 
-  </div>
-`).join("")}
+        </div>
+      `).join("")}
 
-      ${toiletHTML}
+      ${toiletHTML}
 
-    </div>
-  `;
+    </div>
+  `;
 
-  result.style.display = "block";
+  result.style.display = "block";
+
 }
 
 </script>
