@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>行き方を探す</title>
+  <title>行き方を探す｜東京福祉大学 学祭</title>
 
   <style>
     body {
       font-family: sans-serif;
       margin: 0;
-      padding: 30px 20px;
+      padding: 20px;
       background: #f7f7f7;
       color: #333;
     }
@@ -21,42 +21,37 @@
 
     h1 {
       text-align: center;
-      margin-bottom: 35px;
+      margin-bottom: 30px;
     }
 
-    .step {
+    .step-box {
       background: white;
-      padding: 25px;
-      margin-bottom: 25px;
+      padding: 20px;
+      margin-bottom: 20px;
       border-radius: 15px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
 
-    .step-number {
-      font-size: 14px;
+    .step-title {
       font-weight: bold;
-      color: #777;
-      margin-bottom: 8px;
-    }
-
-    h2 {
-      margin-top: 0;
+      font-size: 18px;
+      margin-bottom: 12px;
     }
 
     select {
       width: 100%;
-      padding: 15px;
+      padding: 13px;
       font-size: 16px;
       border: 1px solid #ccc;
-      border-radius: 10px;
+      border-radius: 8px;
       background: white;
     }
 
-    .route-button {
+    button {
       width: 100%;
-      padding: 17px;
+      padding: 15px;
       border: none;
-      border-radius: 12px;
+      border-radius: 10px;
       background: #333;
       color: white;
       font-size: 17px;
@@ -64,8 +59,41 @@
       cursor: pointer;
     }
 
-    .route-button:hover {
-      opacity: 0.8;
+    button:hover {
+      opacity: 0.85;
+    }
+
+    #routeResult {
+      margin-top: 25px;
+    }
+
+    .route-box {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .route-step {
+      padding: 15px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .route-step:last-child {
+      border-bottom: none;
+    }
+
+    .route-step strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .toilet-box {
+      margin-top: 20px;
+      padding: 18px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
   </style>
 </head>
@@ -76,18 +104,15 @@
 
   <h1>📍 行き方を探す</h1>
 
-  <!-- ① 現在位置 -->
-  <div class="step">
-
-    <div class="step-number">STEP 1</div>
-
-    <h2>現在位置</h2>
+  <!-- 現在地 -->
+  <div class="step-box">
+    <div class="step-title">STEP 1　現在地</div>
 
     <select id="start">
-      <option value="">現在位置を選択してください</option>
+      <option value="">現在地を選択してください</option>
 
-      <option value="entrance">9号館入口</option>
-
+      <optgroup label="9号館">
+      <option value="9-1">9号館入口</option>
       <option value="9-b1">出張千輝祭ラジオ</option>
       <option value="9-b1">千輝祭ミュージックフェス</option>
       <option value="9-b1">学部対抗クイズ</option>
@@ -95,63 +120,63 @@
       <option value="9-b1">ビンゴ大会</option>
       <option value="9-b1">男女お手洗い</option>
       <option value="9-1">障害者施設製品販売～僕らが描いたもの～</option>
-      <option value="9-1">男女お手洗い</option>
-      <option value="9-1">多目的お手洗い</option>
+      <option value="9-1">男女お手洗い</option>
+      <option value="9-1">多目的お手洗い</option>
       <option value="9-2">休憩コーナー</option>
       <option value="9-2">保育児童学部の魅力を留学生が描いてみた</option>
-      <option value="">男女お手洗い</option>
+      <option value="">男女お手洗い</option>
       <option value="9-3">出張！心理学入門</option>
       <option value="9-3">入学相談</option>
-      <option value="9-3">つくってあそぼ♪クレーンゲーム</option>
+      <option value="9-3">つくってあそぼ♪クレーンゲーム</option>
       <option value="9-3">手作り遊び広場</option>
       <option value="9-3">出張！王子キャンパス好事研究サークル</option>
-      <option value="9-3">女性お手洗い</option>
-      <option value="9-3">男性お手洗い</option>
+      <option value="9-3">女性お手洗い</option>
+      <option value="9-3">男性お手洗い</option>
       <option value="9-4">着物生地を再利用した、作品の展示</option>
       <option value="9-4">ココロ･クエスト〜命の木を育てよう〜</option>
-      <option value="9-4">男性お手洗い</option>
+      <option value="9-4">男性お手洗い</option>
       <option value="9-5">手縫いでチャレンジ！簡単お手玉講座</option>
       <option value="9-5">わらべうた遊び講座</option>
-      <option value="9-5">女性お手洗い</option>
+      <option value="9-5">女性お手洗い</option>
+      </optgroup>
 
+     <optgroup label="8号館">
       <option value="entrance">8号館入口</option>
-      
       <option value="8-1">スペシャルティコーヒーの提供と豆販売</option>
-      <option value="8-1">多目的お手洗い</option>
+      <option value="8-1">多目的お手洗い</option>
       <option value="8-1">出張こみCafe ～羊毛フェルトマスコットとお菓子の販売～</option>
       <option value="8-2">秋祭り</option>
-      <option value="8-2">男女お手洗い</option>
+      <option value="8-2">男女お手洗い</option>
       <option value="8-3">事件ファイル001隠された宝</option>
       <option value="8-3">ありがとうを届ける、ほっとメッセージ</option>
-      <option value="8-3">男女お手洗い</option>
-      <option value="8-4">めざせハットトリック！？ダーツ体験！</option>
-      <option value="8-4">あの頃のお使い</option>
-      <option value="8-4">リアル人生ゲーム～今日だけ人生やり直せます。～</option>
-      <option value="8-4">男女お手洗い</option>
-      <option value="8-5">ボドゲとレクで遊ぼう！</option>
-      <option value="8-5">男女お手洗い</option>
-      <option value="8-6">演奏会</option>
-      <option value="8-6">男女お手洗い</option>
-      <option value="8-7">タイムカプセル・メモリアル企画</option>
-      <option value="8-7">千輝祭ヒストリー</option>
-      <option value="8-7">映画で人々と交流</option>
-      <option value="8-7">男女お手洗い</option>
-    </select>
+      <option value="8-3">男女お手洗い</option>
+      <option value="8-4">めざせハットトリック！？ダーツ体験！</option>
+      <option value="8-4">あの頃のお使い</option>
+      <option value="8-4">リアル人生ゲーム～今日だけ人生やり直せます。～</option>
+      <option value="8-4">男女お手洗い</option>
+      <option value="8-5">ボドゲとレクで遊ぼう！</option>
+      <option value="8-5">男女お手洗い</option>
+      <option value="8-6">演奏会</option>
+      <option value="8-6">男女お手洗い</option>
+      <option value="8-7">タイムカプセル・メモリアル企画</option>
+      <option value="8-7">千輝祭ヒストリー</option>
+      <option value="8-7">映画で人々と交流</option>
+      <option value="8-7">男女お手洗い</option>
+      </optgroup>
 
+    </select>
   </div>
 
 
-  <!-- ② 行きたい企画 -->
-  <div class="step">
-
-    <div class="step-number">STEP 2</div>
-
-    <h2>行きたい企画</h2>
+  <!-- 行きたい企画 -->
+  <div class="step-box">
+    <div class="step-title">STEP 2　行きたい企画</div>
 
     <select id="destination">
+      <option value="">行きたい企画を選択してください</option>
 
-      <option value="entrance">9号館入口</option>
-
+      <optgroup label="9号館">
+      <option value="9-1">9号館入口</option>
       <option value="9-b1">出張千輝祭ラジオ</option>
       <option value="9-b1">千輝祭ミュージックフェス</option>
       <option value="9-b1">学部対抗クイズ</option>
@@ -159,56 +184,70 @@
       <option value="9-b1">ビンゴ大会</option>
       <option value="9-b1">男女お手洗い</option>
       <option value="9-1">障害者施設製品販売～僕らが描いたもの～</option>
-      <option value="9-1">男女お手洗い</option>
-      <option value="9-1">多目的お手洗い</option>
+      <option value="9-1">男女お手洗い</option>
+      <option value="9-1">多目的お手洗い</option>
       <option value="9-2">休憩コーナー</option>
       <option value="9-2">保育児童学部の魅力を留学生が描いてみた</option>
-      <option value="">男女お手洗い</option>
+      <option value="9-2">男女お手洗い</option>
       <option value="9-3">出張！心理学入門</option>
       <option value="9-3">入学相談</option>
-      <option value="9-3">つくってあそぼ♪クレーンゲーム</option>
+      <option value="9-3">つくってあそぼ♪クレーンゲーム</option>
       <option value="9-3">手作り遊び広場</option>
       <option value="9-3">出張！王子キャンパス好事研究サークル</option>
-      <option value="9-3">女性お手洗い</option>
-      <option value="9-3">男性お手洗い</option>
+      <option value="9-3">女性お手洗い</option>
+      <option value="9-3">男性お手洗い</option>
       <option value="9-4">着物生地を再利用した、作品の展示</option>
       <option value="9-4">ココロ･クエスト〜命の木を育てよう〜</option>
-      <option value="9-4">男性お手洗い</option>
+      <option value="9-4">男性お手洗い</option>
       <option value="9-5">手縫いでチャレンジ！簡単お手玉講座</option>
       <option value="9-5">わらべうた遊び講座</option>
-      <option value="9-5">女性お手洗い</option>
+      <option value="9-5">女性お手洗い</option>
+      </optgroup>
 
+      <optgroup label="8号館">
       <option value="entrance">8号館入口</option>
-      
       <option value="8-1">スペシャルティコーヒーの提供と豆販売</option>
-      <option value="8-1">多目的お手洗い</option>
+      <option value="8-1">多目的お手洗い</option>
       <option value="8-1">出張こみCafe ～羊毛フェルトマスコットとお菓子の販売～</option>
       <option value="8-2">秋祭り</option>
-      <option value="8-2">男女お手洗い</option>
+      <option value="8-2">男女お手洗い</option>
       <option value="8-3">事件ファイル001隠された宝</option>
       <option value="8-3">ありがとうを届ける、ほっとメッセージ</option>
-      <option value="8-3">男女お手洗い</option>
-      <option value="8-4">めざせハットトリック！？ダーツ体験！</option>
-      <option value="8-4">あの頃のお使い</option>
-      <option value="8-4">リアル人生ゲーム～今日だけ人生やり直せます。～</option>
-      <option value="8-4">男女お手洗い</option>
-      <option value="8-5">ボドゲとレクで遊ぼう！</option>
-      <option value="8-5">男女お手洗い</option>
-      <option value="8-6">演奏会</option>
-      <option value="8-6">男女お手洗い</option>
-      <option value="8-7">タイムカプセル・メモリアル企画</option>
-      <option value="8-7">千輝祭ヒストリー</option>
-      <option value="8-7">映画で人々と交流</option>
-      <option value="8-7">男女お手洗い</option>
-    </select>
+      <option value="8-3">男女お手洗い</option>
+      <option value="8-4">めざせハットトリック！？ダーツ体験！</option>
+      <option value="8-4">あの頃のお使い</option>
+      <option value="8-4">リアル人生ゲーム～今日だけ人生やり直せます。～</option>
+      <option value="8-4">男女お手洗い</option>
+      <option value="8-5">ボドゲとレクで遊ぼう！</option>
+      <option value="8-5">男女お手洗い</option>
+      <option value="8-6">演奏会</option>
+      <option value="8-6">男女お手洗い</option>
+      <option value="8-7">タイムカプセル・メモリアル企画</option>
+      <option value="8-7">千輝祭ヒストリー</option>
+      <option value="8-7">映画で人々と交流</option>
+      <option value="8-7">男女お手洗い</option>
 
+      </optgroup>
+
+    </select>
   </div>
 
 
-  <!-- ③ -->
-  <button class="route-button" onclick="showRoute()">
+  <!-- ルート表示ボタン -->
+  <button onclick="showRoute()">
     ここまでの行き方を見る
   </button>
+
+
+  <!-- ルート結果 -->
+  <div id="routeResult"></div>
+
+
+  <!-- お手洗い -->
+  <div class="toilet-box">
+    <h2>🚻 お手洗い</h2>
+    <p>現在地に近いお手洗いを表示する機能を準備中です。</p>
+  </div>
 
 </div>
 
@@ -219,13 +258,121 @@ function showRoute() {
 
   const start = document.getElementById("start").value;
   const destination = document.getElementById("destination").value;
+  const result = document.getElementById("routeResult");
 
-  if (start === "" || destination === "") {
-    alert("現在位置と行きたい企画を選択してください！");
+  if (!start || !destination) {
+    alert("現在地と行きたい企画を選んでください！");
     return;
   }
 
-  alert("ルートを表示する準備中です！");
+  let route = [];
+
+  /*
+    同じ階の場合
+  */
+  if (start === "9-3" && destination === "931") {
+
+    route = [
+      "9号館3階の現在地から出発します",
+      "廊下を進みます",
+      "931教室へ向かいます",
+      "931教室に到着です！"
+    ];
+
+  }
+
+  /*
+    9号館3階 → 9号館B1階
+  */
+  else if (start === "9-3" && destination === "901") {
+
+    route = [
+      "9号館3階から出発します",
+      "階段またはエレベーターで下の階へ移動します",
+      "9号館B1階へ向かいます",
+      "901教室に到着です！"
+    ];
+
+  }
+
+  /*
+    9号館5階 → 9号館3階
+  */
+  else if (start === "9-5" && destination === "931") {
+
+    route = [
+      "9号館5階から出発します",
+      "階段またはエレベーターで3階へ移動します",
+      "3階の廊下を進みます",
+      "931教室に到着です！"
+    ];
+
+  }
+
+  /*
+    8号館 → 9号館
+  */
+  else if (start.startsWith("8-") && destination.startsWith("9")) {
+
+    route = [
+      "現在地の階から8号館の入口へ向かいます",
+      "8号館を出て9号館へ移動します",
+      "9号館に入ります",
+      "目的の階へ移動します",
+      "目的地に到着です！"
+    ];
+
+  }
+
+  /*
+    9号館 → 8号館
+  */
+  else if (start.startsWith("9-") && destination.startsWith("8")) {
+
+    route = [
+      "現在地の階から9号館の入口へ向かいます",
+      "9号館を出て8号館へ移動します",
+      "8号館に入ります",
+      "目的の階へ移動します",
+      "目的地に到着です！"
+    ];
+
+  }
+
+  /*
+    その他
+  */
+  else {
+
+    route = [
+      "現在地から目的地へ向かいます",
+      "目的の階へ移動します",
+      "目的地の教室を目指します",
+      "到着です！"
+    ];
+
+  }
+
+
+  result.innerHTML = `
+    <div class="route-box">
+      <h2>🗺️ 写真付きルート</h2>
+
+      ${route.map((step, index) => `
+        <div class="route-step">
+          <strong>STEP ${index + 1}</strong>
+          <p>${step}</p>
+        </div>
+      `).join("")}
+
+      <div class="toilet-box">
+        🚻 <strong>最寄りのお手洗い</strong>
+        <p>トイレの場所を登録すると、ここに表示できます。</p>
+      </div>
+
+    </div>
+  `;
+
 }
 
 </script>
