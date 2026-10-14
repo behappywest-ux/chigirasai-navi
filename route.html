@@ -352,8 +352,8 @@ const toiletPhotos = {
   // 9号館
   "9-b1": ["9号館男女トイレ.jpg"],
   "9-1": [
-    "9号館男女トイレ.HEIC",
-    "9号館多目的トイレ.HEIC"
+    "9号館男女トイレ.jpg",
+    "9号館多目的トイレ.jpg"
   ],
   "9-2": ["9号館男女トイレ.jpg"],
   "9-3": [
@@ -509,8 +509,11 @@ const toiletPhotos = {
     const photos = toiletPhotos[start] || [];
 
     const photoHTML = photos.map(photo => `
-    DIL0
-    `).join("");
+  <div class="toilet-photo">
+    <img src="${photo}" alt="トイレの写真"
+         style="width:100%; max-width:400px; border-radius:8px;">
+  </div>
+`).join("");
      toiletHTML = `
       <div class="toilet-box">
         <h2>🚻 最寄りお手洗い</h2
