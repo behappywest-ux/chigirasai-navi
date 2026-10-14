@@ -348,6 +348,30 @@ const toilets = {
     multipurpose: false
   }
 };
+const toiletPhotos = {
+  // 9号館
+  "9-b1": ["9号館男女トイレ.HEIC"],
+  "9-1": [
+    "9号館男女トイレ.HEIC",
+    "9号館多目的トイレ.HEIC"
+  ],
+  "9-2": ["9号館男女トイレ.HEIC"],
+  "9-3": [
+    "9号館男子トイレ.HEIC",
+    "9号館女子トイレ.HEIC"
+  ],
+  "9-4": ["9号館男子トイレ.HEIC"],
+  "9-5": ["9号館女子トイレ.HEIC"],
+
+  // 8号館
+  "8-1": ["8号館多目的トイレ.HEIC"],
+  "8-2": ["8号館男女トイレ.HEIC"],
+  "8-3": ["8号館男女トイレ.HEIC"],
+  "8-4": ["8号館男女トイレ.HEIC"],
+  "8-5": ["8号館男女トイレ.HEIC"],
+  "8-6": ["8号館男女トイレ.HEIC"],
+  "8-7": ["8号館男女トイレ.HEIC"]
+};
 
 　function showRoute() {
   
@@ -482,10 +506,15 @@ const toilets = {
 
   if (toilet) {
 
-    toiletHTML = `
-      <div class="toilet-box">
-        <h2>🚻 最寄りお手洗い</h2>
+    const photos = toiletPhotos[start] || [];
 
+    const photoHTML = photos.map(photo => `
+    DIL0
+    `).join("");
+     toiletHTML = `
+      <div class="toilet-box">
+        <h2>🚻 最寄りお手洗い</h2
+        ${photoHTML}
         ${toilet.location
           ? `<p>📍 ${toilet.location}</p>`
           : ""
