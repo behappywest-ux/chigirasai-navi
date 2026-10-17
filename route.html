@@ -600,26 +600,39 @@ const toiletPhotos = {
     const photos = toiletPhotos[start] || [];
 
    const photoHTML = photos.map((photo, index) => `
-  <div class="toilet-photo">
+   <div class="toilet-photo">
     <img src="./${photo}" alt="トイレの写真"
          style="width:100%; max-width:400px; border-radius:8px;">
+${
+  index === 0
+    ? `
+      ${toilet.male || toilet.female ? `
+        <h3>🚹 男子トイレ・🚺 女子トイレ</h3>
+        ${toilet.maleLocation ? `<p>🚹 男子トイレ：${toilet.maleLocation}</p>` : ""}
+        ${toilet.femaleLocation ? `<p>🚺 女子トイレ：${toilet.femaleLocation}</p>` : ""}
+      ` : ""}
 
-    ${
-      index === 0
-        ? `<p>📍 ${toilet.location || ""}</p>
-           ${toilet.male ? `<p>🚹 男子トイレ${toilet.maleLocation ? "：" + toilet.maleLocation : ""}</p>` : ""}
-           ${toilet.female ? `<p>🚺 女子トイレ${toilet.femaleLocation ? "：" + toilet.femaleLocation : ""}</p>` : ""}
-           ${toilet.multipurpose ? `<p>♿ 多目的トイレ${toilet.multipurposeLocation ? "：" + toilet.multipurposeLocation : ""}</p>` : ""}`
-        : ""
-    }
+      ${toilet.multipurpose ? `
+        <h3>♿ 多目的トイレ</h3>
+        <p>${toilet.multipurposeLocation || ""}</p>
+      ` : ""}
+    `
+    : ""
+}
   </div>
 `).join("");
      toiletHTML = `
-      <div class="toilet-box">
-        <h2>🚻 最寄りお手洗い</h2>
-        ${photoHTML}
+      <h2>🚻 最寄りお手洗い</h2>
 
-      </div>
+${photoHTML}
+
+<div class="toilet-info">
+  <h3>🚹 男子トイレ・🚺 女子トイレ</h3>
+  <p>1階の男子・女子トイレの場所</p>
+
+  <h3>♿ 多目的トイレ</h3>
+  <p>1階の多目的トイレの場所</p>
+</div>
     `;
 
   } else {
