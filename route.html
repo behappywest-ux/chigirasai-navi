@@ -635,7 +635,16 @@ toiletHTML = `
     ${photoHTML}
   </div>
 `;
-
+      
+  } else {
+    toiletHTML = `
+      <div class="toilet-box">
+        <h2>🚻 お手洗い</h2>
+        <p>この場所のお手洗い情報はありません。</p>
+      </div>
+    `;
+  }
+     
   // ルート表示
   result.innerHTML = `
     <div class="route-box">
